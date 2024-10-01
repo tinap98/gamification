@@ -1,0 +1,41 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #111;
+    color: white;
+}
+
+.scene {
+    display: none;
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+    background-position: center;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.visible {
+    display: flex;
+}
+
+.character {
+    position: absolute;
+    bottom: 20%; /* Adjust based on your character's placement */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px; /* Adjust size as needed */
+}
+
+h1 {
+    animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamification App</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+</head>
+<body>
+
+    <!-- Scene 1: The Crash Room -->
+    <div id="scene1" class="scene visible" style="background-image: url('gamification/the crash room.png');">
+        <h1>The Crash Room</h1>
+        <img src="gamification/placeholder_student.png" class="character" alt="Student">
+        <p>The student sits slumped at his desk...</p>
+        <button onclick="nextScene(2)">Next</button>
+    </div>
+
+    <!-- Scene 2: The Walk Home -->
+    <div id="scene2" class="scene" style="background-image: url('D:\gamfication\the empty street.png');">
+        <h1>The Walk Home</h1>
+        <img src="gamification/placeholder_student.png" class="character" alt="Student">
+        <p>The student walks home in the rain...</p>
+        <button onclick="nextScene(3)">Next</button>
+    </div>
+
+    <!-- Scene 3: The Pitfall -->
+    <div id="scene3" class="scene" style="background-image: url('gamification/the pit.png');">
+        <h1>The Pitfall</h1>
+        <img src="gamification/placeholder_student.png" class="character" alt="Student">
+        <p>The student falls into a deep pit...</p>
+        <button onclick="nextScene(4)">Next</button>
+    </div>
+
+    <!-- Scene 4: The Genie Appears -->
+    <div id="scene4" class="scene" style="background-image: url('gamification/the pit1.png');">
+        <h1>The Genie Appears</h1>
+        <img src="gamification/placeholder_genie.png" class="character" alt="Genie">
+        <p>A magical genie appears...</p>
+        <button onclick="nextScene(5)">Next</button>
+    </div>
+
+    <!-- Scene 5: The Three Paths -->
+    <div id="scene5" class="scene" style="background-image: url('gamification/the three paths.png');">
+        <h1>The Three Paths</h1>
+        <p>The student must choose between three paths...</p>
+        <button onclick="nextScene(6)">Next</button>
+    </div>
+
+    <!-- Scene 6: The Genie's Offer -->
+    <div id="scene6" class="scene">
+        <h1>The Genie's Offer</h1>
+        <p>The student chooses his path...</p>
+        <button onclick="restart()">Restart</button>
+    </div>
+
+    <audio id="rainSound" src="gamification/rain sound.wav" loop></audio>
+    <audio id="magicSound" src="gamification/magic sound.wav"></audio>
+    <audio id="afterFallSound" src="gamification/after fall.wav"></audio>
+    <audio id="selectSound" src="gamification/select.wav"></audio>
+    <audio id="sadSound" src="gamification/sad sound.wav"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
