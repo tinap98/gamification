@@ -1,41 +1,103 @@
-body, html {
+/* General body styling */
+body {
     margin: 0;
     padding: 0;
-    height: 100%;
-    font-family: Arial, sans-serif;
-    background-color: #111;
-    color: white;
-}
-
-.scene {
-    display: none;
-    height: 100vh;
-    width: 100vw;
-    background-size: cover;
-    background-position: center;
+    display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Scene container styling */
+.scene {
     position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: none; /* Initially hide all scenes */
+
+    justify-content: center;
+    align-items: flex-end;
+    background-size: cover;
+    background-position: center;
 }
 
-.visible {
-    display: flex;
+.scene.visible {
+    display: flex; /* Show the active scene */
 }
 
+/* Specific background images for each scene */
+#scene1 {
+    background-image: url('the\ crash\ room.png');
+}
+
+#scene2 {
+    background-image: url('the\ empty\ street.png');
+}
+
+#scene3 {
+    background-image: url('the\ pit.png');
+}
+
+#scene4 {
+    background-image: url('pit1.png');
+}
+
+#scene5 {
+    background-image: url('the\ three\ paths.png');
+}
+
+#scene6 {
+    background-image: url('backgrounds/sad_ending.jpg');
+}
+
+/* Ensure the character image takes proper size */
 .character {
+    width: 270px; /* Increase size as needed */
+    height: auto; /* Maintain aspect ratio */
     position: absolute;
-    bottom: 20%; /* Adjust based on your character's placement */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 150px; /* Adjust size as needed */
+    top:100px;
+    bottom: 0; /* Stick to the bottom */
+    right: 40px; /* Stick to the right */
+    transform: translateY(-20px); /* Move the boy 20px up from the bottom */
 }
 
-h1 {
-    animation: fadeIn 1s ease forwards;
+/* Dialogue Box Styling */
+.dialogue-box {
+    position: absolute;
+    bottom: 85%; /* Adjust this value based on the height of the character */
+    left: 50%; /* Adjust this value based on the character’s position */
+    transform: translateX(-50%); /* Center the dialogue box horizontally */
+    background: rgba(255, 255, 255, 0.8);
+    border: 2px solid #333;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    max-width: 250px;
+    text-align: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+/* Button styling */
+button {
+    position: absolute;
+    bottom: 20px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Audio styling */
+audio {
+    display: none;
 }
