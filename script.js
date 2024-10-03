@@ -12,6 +12,25 @@ function slideInCharacter(sceneNumber) {
     });
 }
 
+// Typing effect function
+function typeDialogue(text, element) {
+    element.innerText = ""; // Clear existing text
+    element.style.opacity = 1; // Make the text visible
+
+    let index = 0; // Initialize index for the current character
+
+    function typeNextCharacter() {
+        if (index < text.length) {
+            const char = text.charAt(index) === ' ' ? '\u00A0' : text.charAt(index); // Replace space with non-breaking space
+            element.innerHTML += char; // Use innerHTML to maintain spaces
+            index++;
+            setTimeout(typeNextCharacter, 100); // Delay for the next character
+        }
+    }
+
+    typeNextCharacter(); // Start the typing effect
+}
+
 // Handle scene transitions and play sounds accordingly
 function nextScene(sceneNumber) {
     // Hide all scenes
@@ -39,6 +58,45 @@ function nextScene(sceneNumber) {
 
     // Trigger slide-in animation for the new scene
     slideInCharacter(sceneNumber);
+
+    // Update the dialogue in the footer
+    const dialogues = [
+        "Oh nooo, what happened?",  // Scene 1
+        "I better get going...",   // Scene 2
+        "Oh no, I fell!",          // Scene 3
+        "A genie?!",               // Scene 4
+        "Which path should I take?",// Scene 5
+        "I'll choose wisely."       // Scene 6
+    ];
+
+    typeDialogue(dialogues[sceneNumber - 1], document.getElementById('footer-dialogue'));
+}
+
+// Go to the previous scene
+function prevScene(sceneNumber) {
+    // Hide all scenes
+    var scenes = document.querySelectorAll('.scene');
+    scenes.forEach(scene => {
+        scene.classList.remove('visible');
+    });
+
+    // Show the previous scene
+    document.getElementById('scene' + sceneNumber).classList.add('visible');
+
+    // Stop all sounds initially
+    stopAllSounds();
+
+    // Update the dialogue in the footer
+    const dialogues = [
+        "Oh no, what happened?",  // Scene 1
+        "I better get going...",   // Scene 2
+        "Oh no, I fell!",          // Scene 3
+        "A genie?!",               // Scene 4
+        "Which path should I take?",// Scene 5
+        "I'll choose wisely."       // Scene 6
+    ];
+
+    typeDialogue(dialogues[sceneNumber - 1], document.getElementById('footer-dialogue'));
 }
 
 // Stop all sounds
@@ -65,4 +123,5 @@ function restart() {
 // Initialize the first scene with the animation when the page loads
 window.onload = function() {
     slideInCharacter(1); // Start with the character sliding in on scene 1
+    typeDialogue("Oh no, what happened?", document.getElementById('footer-dialogue')); // Initial dialogue
 };
