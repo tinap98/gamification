@@ -5,9 +5,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     background-color: #f0f0f0;
     font-family: 'Arial', sans-serif;
+    overflow:hidden;
 }
 
 /* Scene container styling */
@@ -16,7 +16,6 @@ body {
     width: 100vw;
     height: 100vh;
     display: none; /* Initially hide all scenes */
-
     justify-content: center;
     align-items: flex-end;
     background-size: cover;
