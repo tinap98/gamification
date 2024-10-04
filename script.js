@@ -42,20 +42,20 @@ const dialogues = {
     2: ["Maybe I’m just not cut out for this. No matter how much I study, it feels like I’m going in circles..."],
     3: ["W-Where am I? What just happened?" ],
     4: [
-        "Welcome, young traveler! You’ve fallen into the Cave of Knowledge. But worry not, for I am here to guide you.", // Genie
-        "A genie...? What is this place?", // Student
+        "GENIE: Welcome, young traveler! You’ve fallen into the Cave of Knowledge. But worry not, for I am here to guide you.", // Genie
+        "STUDENT: A genie...? What is this place?", // Student
         "Indeed! I am a genie, but not the kind that grants wishes for riches or fame. I grant something far more valuable—knowledge." // Genie
     ],
     5: [
-        "You are at a crossroads in your journey. There are three paths before you, each representing a different challenge in your quest for mastery.", // Genie
-        "Which path should I take?", // Student
-        "The first path is Aptitude and Reasoning. Follow this road, and you will learn to think logically, solve puzzles, and master the art of reasoning.", // Genie
-        "The second path is Java. Here, you will learn how to program and build your skills to unlock the power of code.", // Genie
-        "The third path is DBMS and SQL. Here, you will delve into the world of databases, learning how to manage and query data to uncover its hidden secrets." // Genie
+        "GENIE: You are at a crossroads in your journey. There are three paths before you, each representing a different challenge in your quest for mastery.", // Genie
+        "STUDENT: Which path should I take?", // Student
+        "GENIE: The first path is Aptitude and Reasoning. Follow this road, and you will learn to think logically, solve puzzles, and master the art of reasoning.", // Genie
+        "GENIE: The second path is Java. Here, you will learn how to program and build your skills to unlock the power of code.", // Genie
+        "GENIE: The third path is DBMS and SQL. Here, you will delve into the world of databases, learning how to manage and query data to uncover its hidden secrets." // Genie
     ],
     6: [
-        "But beware, young one. Each path is filled with challenges. However, I will guide you along the way.", // Genie
-        "So, what will it be? Will you master Aptitude and Reasoning, conquer Java, or unlock the secrets of DBMS and SQL first? The choice is yours." // Genie
+        "GENIE: But beware, young one. Each path is filled with challenges. However, I will guide you along the way.", // Genie
+        "GENIE: So, what will it be? Will you master Aptitude and Reasoning, conquer Java, or unlock the secrets of DBMS and SQL first? The choice is yours." // Genie
     ]
 };
 
