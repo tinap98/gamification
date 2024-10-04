@@ -8,7 +8,7 @@ body {
     height: 100vh;
     background-color: #f0f0f0;
     font-family: 'Arial', sans-serif;
-    overflow:hidden;
+    overflow: hidden; /* Prevent scrolling */
 }
 
 /* Scene container styling */
@@ -17,7 +17,6 @@ body {
     width: 100vw;
     height: 100vh;
     display: none; /* Initially hide all scenes */
-
     justify-content: center;
     align-items: flex-end;
     background-size: cover;
@@ -30,15 +29,15 @@ body {
 
 /* Specific background images for each scene */
 #scene1 {
-    background-image: url('the\ crash\ room.png');
+    background-image: url('the crash room.png');
 }
 
 #scene2 {
-    background-image: url('the\ empty\ street.png');
+    background-image: url('the empty street.png');
 }
 
 #scene3 {
-    background-image: url('the\ pit.png');
+    background-image: url('the pit.png');
 }
 
 #scene4 {
@@ -46,7 +45,7 @@ body {
 }
 
 #scene5 {
-    background-image: url('the\ three\ paths.png');
+    background-image: url('the three paths.png');
 }
 
 #scene6 {
@@ -55,48 +54,100 @@ body {
 
 /* Ensure the character image takes proper size */
 .character {
-    width: 270px; /* Increase size as needed */
+    width: 270px; /* Adjust size as needed */
     height: auto; /* Maintain aspect ratio */
     position: absolute;
-    top:100px;
-    bottom: 0; /* Stick to the bottom */
-    right: 40px; /* Stick to the right */
-    transform: translateY(-20px); /* Move the boy 20px up from the bottom */
+    top: 100px;
+    bottom: 0;
+    right: 40px;
+    transform: translateY(-20px); /* Move character slightly up */
 }
 
-/* Dialogue Box Styling */
-.dialogue-box {
-    position: absolute;
-    bottom: 85%; /* Adjust this value based on the height of the character */
-    left: 50%; /* Adjust this value based on the character’s position */
-    transform: translateX(-50%); /* Center the dialogue box horizontally */
-    background: rgba(255, 255, 255, 0.8);
-    border: 2px solid #333;
-    border-radius: 10px;
-    padding: 10px 20px;
+/* Footer styling */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw; /* Full viewport width */
+    height: 80px; /* Adjust height based on your requirement */
+    background-color: rgba(255, 255, 255, 0.9); /* Background color for the footer */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 2px solid #333; /* Border to make it stand out */
+    padding: 10px;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
     font-family: 'Arial', sans-serif;
     font-size: 16px;
-    max-width: 250px;
     text-align: center;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1; /* Set a lower z-index so the button appears above */
 }
 
-/* Button styling */
-button {
-    position: absolute;
-    bottom: 20px;
+/* Footer dialogue text with animation */
+.footer-text {
+    font-size: 22px;
+    color: #333;
+    opacity: 0; /* Start hidden for fade-in effect */
+    transition: opacity 0.5s ease-in; /* Fade-in transition */
+}
+
+
+/* Styling for the Next button */
+.next-btn {
+    position: absolute; /* Place the button relative to the footer */
+    bottom: 20px; /* Slightly above the bottom of the footer */
+    right: 40px; /* Right side of the footer */
     background-color: #4CAF50;
-    color: white;
+    color: yellowgreen;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 18px;
+    z-index: 2; /* Ensure it stays above the footer */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-button:hover {
+.next-btn:hover {
     background-color: #45a049;
 }
+
+/* Align arrow with text */
+.next-btn::after {
+    margin-left: 10px;
+}
+
+/* Styling for the Prev button */
+/* Styling for the Prev button */
+.prev-btn {
+    position: absolute;
+    bottom: 20px; /* Position it above the footer */
+    left: 40px; /* Align to the left side */
+    background-color: #4CAF50;
+    color: yellowgreen;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 10000; /* Ensure it stays above the footer */
+}
+
+.prev-btn:hover {
+    background-color: #45a049;
+}
+
+/* Align arrow with text */
+.prev-btn::after {
+    margin-right: 10px;
+}
+
+
 
 /* Audio styling */
 audio {
