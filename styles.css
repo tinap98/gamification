@@ -1,4 +1,4 @@
-/* General body styling */
+
 body {
     margin: 0;
     padding: 0;
@@ -8,10 +8,9 @@ body {
     height: 100vh;
     background-color: #f0f0f0;
     font-family: 'Arial', sans-serif;
-    overflow: hidden; /* Prevent scrolling */
+    overflow: hidden;
 }
 
-/* Scene container styling */
 .scene {
     position: relative;
     width: 100vw;
@@ -145,6 +144,17 @@ footer {
 /* Align arrow with text */
 .prev-btn::after {
     margin-right: 10px;
+}
+
+/* Genie styling */
+.genie {
+    width: 450px; /* Adjust the size as needed */
+    height: auto;
+    position: absolute;
+    bottom: 130px; /* Genie on the ground */
+    left: 20px; /* Genie positioned to the extreme left */
+    opacity: 0; /* Initially hidden for fade-in */
+    transform: translateY(20px); /* Slightly offset for animation effect */
 }
 
 
