@@ -11,47 +11,57 @@
 <body>
 
     <!-- Scene 1: The Crash Room -->
-    <div id="scene1" class="scene visible">
-        <img src="student.png" class="character" alt="Student">
-        <div class="dialogue-box">"Oh no, what happened?"</div>
-        <button onclick="nextScene(2)">Next</button>
-    </div>
+<div id="scene1" class="scene visible">
+    <img src="student.png" class="character" alt="Student">
+    <button onclick="nextScene(2)" class="next-btn">Next &#10132;</button> <!-- Arrow symbol included -->
+    <button onclick="prevScene(0)" class="prev-btn">Prev &#10094;</button> <!-- Prev button -->
+</div>
 
-    <!-- Scene 2: The Walk Home -->
-    <div id="scene2" class="scene">
-        <img src="student.png" class="character" alt="Student">
-        <div class="dialogue-box">"I better get going..."</div>
-        <button onclick="nextScene(3)">Next</button>
-    </div>
+<!-- Scene 2: The Walk Home -->
+<div id="scene2" class="scene">
+    <img src="student.png" class="character" alt="Student">
+    <button onclick="nextScene(3)" class="next-btn">Next &#10132;</button>
+    <button onclick="prevScene(1)" class="prev-btn">Prev &#10094;</button> <!-- Prev button -->
+</div>
 
-    <!-- Scene 3: The Pitfall -->
-    <div id="scene3" class="scene">
-        <img src="student.png" class="character" alt="Student">
-        <div class="dialogue-box">"Oh no, I fell!"</div>
-        <button onclick="nextScene(4)">Next</button>
-    </div>
+<!-- Scene 3: The Pitfall -->
+<div id="scene3" class="scene">
+    <img src="student.png" class="character" alt="Student">
+    <button onclick="nextScene(4)" class="next-btn">Next &#10132;</button>
+    <button onclick="prevScene(2)" class="prev-btn">Prev &#10094;</button> <!-- Prev button -->
+</div>
 
-    <!-- Scene 4: The Genie Appears -->
-    <div id="scene4" class="scene">
-        <img src="student.png" class="character" alt="Student">
-        <div class="dialogue-box">"A genie?!"</div>
-        <button onclick="nextScene(5)">Next</button>
-    </div>
+<!-- Scene 4: The Genie Appears -->
+<div id="scene4" class="scene">
+    <img src="genie.png" class="genie" alt="Genie"> <!-- Genie image -->
+    <img src="student.png" class="character" alt="Student">
+    <button onclick="nextScene(5)" class="next-btn">Next &#10132;</button>
+    <button onclick="prevScene(3)" class="prev-btn">Prev &#10094;</button> <!-- Prev button -->
+</div>
 
-    <!-- Scene 5: The Three Paths -->
-    <div id="scene5" class="scene">
-        <img src="student.png" class="character" alt="Student">
-        <div class="dialogue-box">"Which path should I take?"</div>
-        <button onclick="nextScene(6)">Next</button>
-    </div>
+<!-- Scene 5: The Three Paths -->
+<div id="scene5" class="scene">
+    <img src="genie.png" class="genie" alt="Genie"> <!-- Genie image -->
+    <img src="student.png" class="character" alt="Student">
+    <button onclick="nextScene(6)" class="next-btn">Next &#10132;</button>
+    <button onclick="prevScene(4)" class="prev-btn">Prev &#10094;</button> <!-- Prev button -->
+</div>
 
-    <!-- Scene 6: The Genie's Offer -->
-    <div id="scene6" class="scene">
-        <img src="student.png" class="character" alt="Student">
-        <div class="dialogue-box">"I'll choose wisely."</div>
-        <button onclick="restart()">Restart</button>
-    </div>
+<!-- Scene 6: The Genie's Offer -->
+<div id="scene6" class="scene">
+    <img src="genie.png" class="genie" alt="Genie"> <!-- Genie image -->
+    <img src="student.png" class="character" alt="Student">
+    <button onclick="restart()" class="next-btn">Restart &#10132;</button> <!-- Restart button for final scene -->
+    <button onclick="prevScene(5)" class="prev-btn">Prev &#10094;</button> <!-- Prev button -->
+</div>
 
+
+    <!-- Footer for Dialogue -->
+    <footer>
+        <div id="footer-dialogue" class="footer-text">This is the initial dialogue text.</div>
+    </footer>
+
+    <!-- Audio Elements -->
     <audio id="rainSound" src="rain sound.wav" loop></audio>
     <audio id="magicSound" src="magic sound.wav"></audio>
     <audio id="afterFallSound" src="after fall.wav"></audio>
