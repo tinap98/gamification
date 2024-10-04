@@ -1,165 +1,202 @@
 // GSAP Slide Animation Function (from right to extreme right)
 function slideInCharacter(sceneNumber) {
     const character = document.querySelector('#scene' + sceneNumber + ' .character');
-
-    // Reset any ongoing animation for the character
-    gsap.killTweensOf(character);
-
-    // Move the character off-screen initially (right side)
-    gsap.set(character, { x: '100%', right: 0, bottom: 0 });
-
-    // Slide the character into view and stop at the extreme right
-    gsap.to(character, {
-        x: 10, // Character will stop at the extreme right of the screen
-        duration: 1
-    });
+    gsap.killTweensOf(character); // Reset any ongoing animation
+    gsap.set(character, { x: '100%', right: 0, bottom: 0 }); // Start off-screen
+    gsap.to(character, { x: 10, duration: 1 }); // Slide in
 }
 
 // GSAP Fade-in Animation for the Genie
 function fadeInGenie(sceneNumber) {
     const genie = document.querySelector('#scene' + sceneNumber + ' .genie');
-
-    // Reset any ongoing animation for the genie
-    gsap.killTweensOf(genie);
-
-    // Ensure genie starts invisible on the extreme left
-    gsap.set(genie, { opacity: 0, x: '-100%' });
-
-    // Fade-in and move the genie slightly from the left
-    gsap.to(genie, {
-        opacity: 1,
-        x: 10, // Genie will appear on the extreme left side of the screen
-        duration: 1
-    });
+    gsap.killTweensOf(genie); // Reset any ongoing animation
+    gsap.set(genie, { opacity: 0, x: '-100%' }); // Start invisible
+    gsap.to(genie, { opacity: 1, x: 10, duration: 1 }); // Fade-in
 }
 
-// Typing effect function with reset for the previous text
+// Typing effect function
 function typeDialogue(text, element) {
-    // Clear existing text and cancel any ongoing typing
-    element.innerText = ""; // Clear any existing text instantly
-    let typingInProgress = false; // Ensure that typing is only done once per call
-
-    // Ensure the footer text is visible
-    element.style.opacity = 1;
+    element.innerText = ""; // Clear existing text
+    element.style.opacity = 1; // Ensure text is visible
 
     let index = 0;
-
-    // Clear any previous timeouts if they exist
     if (window.typingTimeout) {
-        clearTimeout(window.typingTimeout);
+        clearTimeout(window.typingTimeout); // Clear any previous timeouts
     }
 
     function typeNextCharacter() {
         if (index < text.length) {
             const char = text.charAt(index) === ' ' ? '\u00A0' : text.charAt(index); // Non-breaking space for spaces
-            element.innerHTML += char; // Append the character
-
+            element.innerHTML += char; // Append character
             index++;
-
-            // Set timeout for the next character
-            window.typingTimeout = setTimeout(typeNextCharacter, 100);
+            window.typingTimeout = setTimeout(typeNextCharacter, 100); // Set timeout for next character
         }
     }
 
-    // Start the typing process
-    typeNextCharacter();
+    typeNextCharacter(); // Start typing process
 }
+
+// Array to store the dialogues for each scene
+const dialogues = {
+    1: ["No matter how hard I try, I just can’t get it. Nothing makes sense anymore..."],
+    2: ["Maybe I’m just not cut out for this. No matter how much I study, it feels like I’m going in circles..."],
+    3: ["W-Where am I? What just happened?" ],
+    4: [
+        "Welcome, young traveler! You’ve fallen into the Cave of Knowledge. But worry not, for I am here to guide you.", // Genie
+        "A genie...? What is this place?", // Student
+        "Indeed! I am a genie, but not the kind that grants wishes for riches or fame. I grant something far more valuable—knowledge." // Genie
+    ],
+    5: [
+        "You are at a crossroads in your journey. There are three paths before you, each representing a different challenge in your quest for mastery.", // Genie
+        "Which path should I take?", // Student
+        "The first path is Aptitude and Reasoning. Follow this road, and you will learn to think logically, solve puzzles, and master the art of reasoning.", // Genie
+        "The second path is Java. Here, you will learn how to program and build your skills to unlock the power of code.", // Genie
+        "The third path is DBMS and SQL. Here, you will delve into the world of databases, learning how to manage and query data to uncover its hidden secrets." // Genie
+    ],
+    6: [
+        "But beware, young one. Each path is filled with challenges. However, I will guide you along the way.", // Genie
+        "So, what will it be? Will you master Aptitude and Reasoning, conquer Java, or unlock the secrets of DBMS and SQL first? The choice is yours." // Genie
+    ]
+};
+
+// Keep track of the current dialogue index for each scene
+const currentDialogueIndex = {};
+
+// Keep track of whether the character has slid in
+const characterSlidIn = {};
 
 // Handle scene transitions and play sounds accordingly
 function nextScene(sceneNumber) {
-    // Hide all scenes
     var scenes = document.querySelectorAll('.scene');
     scenes.forEach(scene => {
-        scene.classList.remove('visible');
+        scene.classList.remove('visible'); // Hide all scenes
     });
 
-    // Show the next scene
-    document.getElementById('scene' + sceneNumber).classList.add('visible');
-
-    // Stop all sounds initially
-    stopAllSounds();
+    document.getElementById('scene' + sceneNumber).classList.add('visible'); // Show the next scene
+    stopAllSounds(); // Stop all sounds
 
     // Play specific sounds depending on the scene
-    if (sceneNumber === 2) {
-        rainSound.play(); // Play rain sound when walking home
-    } else if (sceneNumber === 3) {
-        afterFallSound.play(); // Play fall sound in the pit
-    } else if (sceneNumber === 4) {
-        magicSound.play(); // Play magic sound when the genie appears
-        fadeInGenie(4);    // Genie appears in scene 4
-    } else if (sceneNumber === 5) {
-        fadeInGenie(5);    // Genie appears in scene 5
-    } else if (sceneNumber === 6) {
-        sadSound.play(); // Play sad sound at the end
-        fadeInGenie(6);    // Genie appears in scene 6
+    switch (sceneNumber) {
+        case 2: 
+            rainSound.play(); 
+            if (!characterSlidIn[sceneNumber]) {
+                slideInCharacter(sceneNumber); // Slide-in animation for the character
+                characterSlidIn[sceneNumber] = true; // Mark as slid in
+            }
+            break; // Only animate on the first dialogue
+        case 3: 
+            afterFallSound.play(); 
+            if (!characterSlidIn[sceneNumber]) {
+                slideInCharacter(sceneNumber); // Slide-in animation for the character
+                characterSlidIn[sceneNumber] = true; // Mark as slid in
+            }
+            break; // Only animate on the first dialogue
+        case 4:
+            if (!characterSlidIn[sceneNumber]) {
+                magicSound.play(); // Play magic sound
+                fadeInGenie(4); // Genie appears (animate only on first dialogue)
+                slideInCharacter(sceneNumber); // Slide-in animation
+                characterSlidIn[sceneNumber] = true; // Mark as slid in
+            }
+            break; // Do not animate if already settled in
+        case 5:
+            if (!characterSlidIn[sceneNumber]) {
+                fadeInGenie(5); // Genie appears
+                slideInCharacter(sceneNumber); // Slide-in animation for the character
+                characterSlidIn[sceneNumber] = true; // Mark as slid in
+            }
+            break; // Only animate on the first dialogue
+        case 6: 
+            sadSound.play(); 
+            if (!characterSlidIn[sceneNumber]) {
+                fadeInGenie(6); // Genie appears
+                slideInCharacter(sceneNumber); // Slide-in animation for the character
+                characterSlidIn[sceneNumber] = true; // Mark as slid in
+            }
+            break; // Only animate on the first dialogue
     }
 
-    // Trigger slide-in animation for the new scene
-    slideInCharacter(sceneNumber);
+    // Initialize dialogue index for the current scene if not already set
+    if (!currentDialogueIndex[sceneNumber]) {
+        currentDialogueIndex[sceneNumber] = 0; // Start with the first dialogue
+    }
 
-    // Update the dialogue in the footer
-    const dialogues = [
-        "Oh nooo, what happened?",  // Scene 1
-        "I better get going...",   // Scene 2
-        "Oh no, I fell!",          // Scene 3
-        "A genie?!",               // Scene 4
-        "Which path should I take?",// Scene 5
-        "I'll choose wisely."       // Scene 6
-    ];
-
-    typeDialogue(dialogues[sceneNumber - 1], document.getElementById('footer-dialogue'));
+    // Type the dialogue for the current scene based on the index
+    typeDialogue(dialogues[sceneNumber][currentDialogueIndex[sceneNumber]], document.getElementById('footer-dialogue')); // Update dialogue
 }
 
 // Go to the previous scene
 function prevScene(sceneNumber) {
-    // Hide all scenes
     var scenes = document.querySelectorAll('.scene');
     scenes.forEach(scene => {
-        scene.classList.remove('visible');
+        scene.classList.remove('visible'); // Hide all scenes
     });
 
-    // Show the previous scene
-    document.getElementById('scene' + sceneNumber).classList.add('visible');
+    document.getElementById('scene' + sceneNumber).classList.add('visible'); // Show the previous scene
+    stopAllSounds(); // Stop all sounds
 
-    // Stop all sounds initially
-    stopAllSounds();
-
-    // Update the dialogue in the footer
-    const dialogues = [
-        "Oh nooo, what happened?",  // Scene 1
-        "I better get going...",   // Scene 2
-        "Oh no, I fell!",          // Scene 3
-        "A genie?!",               // Scene 4
-        "Which path should I take?",// Scene 5
-        "I'll choose wisely."       // Scene 6
-    ];
-
-    typeDialogue(dialogues[sceneNumber - 1], document.getElementById('footer-dialogue'));
+    // Reset dialogue index for the previous scene
+    currentDialogueIndex[sceneNumber] = 0; // Reset dialogue index
+    typeDialogue(dialogues[sceneNumber][currentDialogueIndex[sceneNumber]], document.getElementById('footer-dialogue')); // Update dialogue
+    
+    // Slide in character only if not already slid in
+    if (!characterSlidIn[sceneNumber]) {
+        slideInCharacter(sceneNumber); // Slide-in animation for character
+        characterSlidIn[sceneNumber] = true; // Mark as slid in
+    }
 }
 
 // Stop all sounds
 function stopAllSounds() {
-    rainSound.pause();
-    magicSound.pause();
-    afterFallSound.pause();
-    selectSound.pause();
-    sadSound.pause();
-
-    // Reset the currentTime so that audio can be replayed from the start
-    rainSound.currentTime = 0;
-    magicSound.currentTime = 0;
-    afterFallSound.currentTime = 0;
-    selectSound.currentTime = 0;
-    sadSound.currentTime = 0;
+    rainSound.pause(); rainSound.currentTime = 0;
+    magicSound.pause(); magicSound.currentTime = 0;
+    afterFallSound.pause(); afterFallSound.currentTime = 0;
+    selectSound.pause(); selectSound.currentTime = 0;
+    sadSound.pause(); sadSound.currentTime = 0;
 }
 
 // Restart the story
 function restart() {
-    nextScene(1);
+    nextScene(1); // Reset to first scene
 }
 
 // Initialize the first scene with the animation when the page loads
 window.onload = function() {
-    slideInCharacter(1); // Start with the character sliding in on scene 1
-    typeDialogue("Oh no, what happened?", document.getElementById('footer-dialogue')); // Initial dialogue
+    slideInCharacter(1); // Start with the character sliding in
+    currentDialogueIndex[1] = 0; // Set initial dialogue index
+    typeDialogue(dialogues[1][0], document.getElementById('footer-dialogue')); // Initial dialogue
 };
+
+// Handle click event to advance the scene
+window.addEventListener('click', function() {
+    const visibleScene = document.querySelector('.scene.visible');
+    let currentSceneNumber = parseInt(visibleScene.id.replace('scene', ''));
+
+    // Check if there are more dialogues for the current scene
+    if (currentDialogueIndex[currentSceneNumber] < dialogues[currentSceneNumber].length - 1) {
+        currentDialogueIndex[currentSceneNumber]++; // Move to the next dialogue
+    } else {
+        // If it's the last dialogue, advance to the next scene
+        currentSceneNumber++;
+        if (currentSceneNumber > Object.keys(dialogues).length) {
+            currentSceneNumber = 1; // Reset to first scene if we exceed the number of scenes
+        }
+        currentDialogueIndex[currentSceneNumber] = 0; // Reset dialogue index for the new scene
+    }
+
+    typeDialogue(dialogues[currentSceneNumber][currentDialogueIndex[currentSceneNumber]], document.getElementById('footer-dialogue')); // Type the dialogue
+    nextScene(currentSceneNumber); // Move to the next scene
+});
+
+// Add event listener for the single Previous button
+document.querySelectorAll('.prev-button').forEach((button) => {
+    button.addEventListener('click', function() {
+        const visibleScene = document.querySelector('.scene.visible');
+        let currentSceneNumber = parseInt(visibleScene.id.replace('scene', ''));
+        currentSceneNumber--; // Go to the previous scene
+        if (currentSceneNumber < 1) {
+            currentSceneNumber = 1; // Prevent going below the first scene
+        }
+        prevScene(currentSceneNumber); // Move to the previous scene
+    });
+});

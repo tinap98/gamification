@@ -1,4 +1,3 @@
-
 body {
     margin: 0;
     padding: 0;
@@ -48,7 +47,7 @@ body {
 }
 
 #scene6 {
-    background-image: url('backgrounds/sad_ending.jpg');
+    background-image: url('the\ three\ paths.png');
 }
 
 /* Ensure the character image takes proper size */
@@ -57,19 +56,19 @@ body {
     height: auto; /* Maintain aspect ratio */
     position: absolute;
     top: 100px;
-    bottom: 0;
     right: 40px;
     transform: translateY(-20px); /* Move character slightly up */
 }
 
 /* Footer styling */
 footer {
+    background-color: rgba(0, 0, 0, 0.7); /* Background is 30% transparent */
+    color: white;
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100vw; /* Full viewport width */
     height: 80px; /* Adjust height based on your requirement */
-    background-color: rgba(255, 255, 255, 0.9); /* Background color for the footer */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -84,66 +83,29 @@ footer {
 
 /* Footer dialogue text with animation */
 .footer-text {
-    font-size: 22px;
-    color: #333;
+    font-size: 30px;
+    color: white;
     opacity: 0; /* Start hidden for fade-in effect */
     transition: opacity 0.5s ease-in; /* Fade-in transition */
 }
 
-
-/* Styling for the Next button */
-.next-btn {
-    position: absolute; /* Place the button relative to the footer */
-    bottom: 20px; /* Slightly above the bottom of the footer */
-    right: 40px; /* Right side of the footer */
-    background-color: #4CAF50;
-    color: yellowgreen;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 18px;
-    z-index: 2; /* Ensure it stays above the footer */
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+/* Small Prev button positioned in the top-left corner */
+button {
+    position: absolute; /* Positioning button absolutely */
+    top: 20px;          /* Adjust the top position */
+    left: 20px;         /* Adjust the left position */
+    padding: 10px 15px; /* Add some padding for better appearance */
+    border: 1px solid black; /* Add a black border */
+    background-color: white; /* Set a background color */
+    color: black;      /* Text color */
+    cursor: pointer;   /* Change cursor to pointer on hover */
+    border-radius: 5px; /* Rounded corners */
+    z-index: 10;       /* Ensure it's above other elements */
 }
 
-.next-btn:hover {
-    background-color: #45a049;
-}
-
-/* Align arrow with text */
-.next-btn::after {
-    margin-left: 10px;
-}
-
-/* Styling for the Prev button */
-/* Styling for the Prev button */
-.prev-btn {
-    position: absolute;
-    bottom: 20px; /* Position it above the footer */
-    left: 40px; /* Align to the left side */
-    background-color: #4CAF50;
-    color: yellowgreen;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 10000; /* Ensure it stays above the footer */
-}
-
-.prev-btn:hover {
-    background-color: #45a049;
-}
-
-/* Align arrow with text */
-.prev-btn::after {
-    margin-right: 10px;
+/* Optionally, add hover effects */
+button:hover {
+    background-color: lightgray; /* Change background color on hover */
 }
 
 /* Genie styling */
@@ -157,7 +119,21 @@ footer {
     transform: translateY(20px); /* Slightly offset for animation effect */
 }
 
+#footer-dialogue {
+    max-width: 80%; /* Adjust as necessary */
+    overflow-wrap: break-word; /* Allow text to break */
+}
 
+/* Dialogue differentiation */
+.student-dialogue {
+    color: white; /* Color for student dialogue */
+    font-weight: bold; /* Make it bold */
+}
+
+.genie-dialogue {
+    color: green; /* Color for genie dialogue */
+    font-style: italic; /* Italicize */
+}
 
 /* Audio styling */
 audio {
