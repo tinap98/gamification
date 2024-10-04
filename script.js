@@ -29,7 +29,7 @@ function typeDialogue(text, element) {
             const char = text.charAt(index) === ' ' ? '\u00A0' : text.charAt(index); // Non-breaking space for spaces
             element.innerHTML += char; // Append character
             index++;
-            window.typingTimeout = setTimeout(typeNextCharacter, 100); // Set timeout for next character
+            window.typingTimeout = setTimeout(typeNextCharacter, 50); // Set timeout for next character
         }
     }
 
